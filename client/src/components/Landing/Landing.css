@@ -1,9 +1,85 @@
 /* ══════════════════════════════════════════════════════════════
-   Landing.css  –  Black hero section
+   Landing.css  –  Black hero · Silver typographic name
    ══════════════════════════════════════════════════════════════ */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
+
+/* ── Section shell ───────────────────────────────────────────── */
 .landing {
   position: relative;
   min-height: 100vh;
   background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 6vw;
+  overflow: hidden;
+}
+
+/* ── Subtle radial glow behind text ─────────────────────────── */
+.landing::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 70vh;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(192, 192, 192, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Typo wrapper ────────────────────────────────────────────── */
+.landing-typo-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.88;
+  user-select: none;
+}
+
+/* ── Shared text style ───────────────────────────────────────── */
+.landing-firstname,
+.landing-lastname {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #c0c0c0 25%,
+    #e8e8e8 50%,
+    #a0a0a0 75%,
+    #d4d4d4 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: silver-sheen 6s ease-in-out infinite alternate;
+}
+
+/* ── First name – massive ────────────────────────────────────── */
+.landing-firstname {
+  font-size: clamp(5rem, 14vw, 14rem);
+}
+
+/* ── Last name initial – even bigger, slight indent ─────────── */
+.landing-lastname {
+  font-size: clamp(8rem, 22vw, 22rem);
+  margin-left: clamp(0.5rem, 2vw, 3rem);
+  line-height: 0.8;
+  text-shadow: none;
+  /* Outline / stamp effect for the lone letter */
+  -webkit-text-stroke: 1px rgba(180, 180, 180, 0.35);
+}
+
+/* ── Shimmering silver gradient shift ───────────────────────── */
+@keyframes silver-sheen {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
 }
