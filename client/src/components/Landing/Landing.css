@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   Landing.css  –  Black hero · High-gloss silver typographic name
+   Landing.css  –  Black hero · Static polished-chrome text
    ══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-/* ── Ambient glow behind the text ───────────────────────────── */
+/* ── Soft ambient glow so text lifts off the black ──────────── */
 .landing::before {
   content: '';
   position: absolute;
@@ -27,71 +27,61 @@
   height: 80vh;
   background: radial-gradient(
     ellipse at center,
-    rgba(220, 220, 220, 0.12) 0%,
-    rgba(160, 160, 160, 0.05) 40%,
-    transparent 70%
+    rgba(210, 210, 210, 0.08) 0%,
+    transparent 65%
   );
   pointer-events: none;
 }
 
-/* ── Light-sweep overlay (pseudo element on wrapper) ─────────── */
+/* ── Typo wrapper ────────────────────────────────────────────── */
 .landing-typo-wrap {
-  position: relative;
   display: flex;
   flex-direction: column;
   line-height: 0.88;
   user-select: none;
 }
 
-/* ── Shared text style ───────────────────────────────────────── */
+/* ── Shared polished-chrome style ────────────────────────────── */
 .landing-firstname,
 .landing-lastname {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 900;
   letter-spacing: -0.03em;
 
-  /* High-contrast chrome gradient: tight bright peak + dark flanks */
+  /*
+   * Vertical gradient simulating a real chrome surface:
+   * light comes from above → bright highlight band near top,
+   * falls off to mid-silver, dips dark at belly, lifts slightly at base.
+   */
   background: linear-gradient(
-    105deg,
-    #3a3a3a   0%,
-    #888888  10%,
-    #c8c8c8  18%,
-    #ffffff  25%,
-    #f0f0f0  30%,
-    #c0c0c0  38%,
-    #e8e8e8  45%,
-    #ffffff  52%,   /* second bright peak */
-    #d0d0d0  58%,
-    #909090  68%,
-    #c8c8c8  76%,
-    #ffffff  84%,   /* third flash */
-    #a0a0a0  92%,
-    #555555 100%
+    180deg,
+    #9a9a9a  0%,    /* top edge – slightly duller  */
+    #ffffff 18%,    /* main specular highlight      */
+    #e2e2e2 30%,    /* bright upper body            */
+    #b0b0b0 45%,    /* mid-tone                     */
+    #6e6e6e 58%,    /* shadow belly                 */
+    #c8c8c8 72%,    /* secondary bounce light       */
+    #f0f0f0 82%,    /* lower glint                  */
+    #8a8a8a 100%    /* base edge                    */
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  background-size: 300% 100%;
-  animation: chrome-sweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+
+  /* Crisp inner glow to reinforce the lit-from-above feel */
+  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.18))
+          drop-shadow(0 0px 1px rgba(255, 255, 255, 0.55));
 }
 
-/* ── First name – massive ────────────────────────────────────── */
+/* ── First name ──────────────────────────────────────────────── */
 .landing-firstname {
   font-size: clamp(5rem, 14vw, 14rem);
 }
 
-/* ── Last name initial – oversized, indented ─────────────────── */
+/* ── Last name initial ───────────────────────────────────────── */
 .landing-lastname {
   font-size: clamp(8rem, 22vw, 22rem);
   margin-left: clamp(0.5rem, 2vw, 3rem);
   line-height: 0.8;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
-  /* Stagger so it doesn't sync perfectly with firstname */
-  animation-delay: 0.4s;
-}
-
-/* ── Chrome light-sweep ──────────────────────────────────────── */
-@keyframes chrome-sweep {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -100% 0; }
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
 }
