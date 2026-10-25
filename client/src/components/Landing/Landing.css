@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   Landing.css  –  Black hero · Silver typographic name
+   Landing.css  –  Black hero · High-gloss silver typographic name
    ══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
@@ -16,25 +16,27 @@
   overflow: hidden;
 }
 
-/* ── Subtle radial glow behind text ─────────────────────────── */
+/* ── Ambient glow behind the text ───────────────────────────── */
 .landing::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 70vh;
+  width: 90vw;
+  height: 80vh;
   background: radial-gradient(
     ellipse at center,
-    rgba(192, 192, 192, 0.07) 0%,
+    rgba(220, 220, 220, 0.12) 0%,
+    rgba(160, 160, 160, 0.05) 40%,
     transparent 70%
   );
   pointer-events: none;
 }
 
-/* ── Typo wrapper ────────────────────────────────────────────── */
+/* ── Light-sweep overlay (pseudo element on wrapper) ─────────── */
 .landing-typo-wrap {
+  position: relative;
   display: flex;
   flex-direction: column;
   line-height: 0.88;
@@ -47,19 +49,30 @@
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 900;
   letter-spacing: -0.03em;
+
+  /* High-contrast chrome gradient: tight bright peak + dark flanks */
   background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #c0c0c0 25%,
-    #e8e8e8 50%,
-    #a0a0a0 75%,
-    #d4d4d4 100%
+    105deg,
+    #3a3a3a   0%,
+    #888888  10%,
+    #c8c8c8  18%,
+    #ffffff  25%,
+    #f0f0f0  30%,
+    #c0c0c0  38%,
+    #e8e8e8  45%,
+    #ffffff  52%,   /* second bright peak */
+    #d0d0d0  58%,
+    #909090  68%,
+    #c8c8c8  76%,
+    #ffffff  84%,   /* third flash */
+    #a0a0a0  92%,
+    #555555 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  background-size: 200% 200%;
-  animation: silver-sheen 6s ease-in-out infinite alternate;
+  background-size: 300% 100%;
+  animation: chrome-sweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* ── First name – massive ────────────────────────────────────── */
@@ -67,19 +80,18 @@
   font-size: clamp(5rem, 14vw, 14rem);
 }
 
-/* ── Last name initial – even bigger, slight indent ─────────── */
+/* ── Last name initial – oversized, indented ─────────────────── */
 .landing-lastname {
   font-size: clamp(8rem, 22vw, 22rem);
   margin-left: clamp(0.5rem, 2vw, 3rem);
   line-height: 0.8;
-  text-shadow: none;
-  /* Outline / stamp effect for the lone letter */
-  -webkit-text-stroke: 1px rgba(180, 180, 180, 0.35);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
+  /* Stagger so it doesn't sync perfectly with firstname */
+  animation-delay: 0.4s;
 }
 
-/* ── Shimmering silver gradient shift ───────────────────────── */
-@keyframes silver-sheen {
-  0%   { background-position: 0%   50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0%   50%; }
+/* ── Chrome light-sweep ──────────────────────────────────────── */
+@keyframes chrome-sweep {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
 }
