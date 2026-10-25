@@ -12,14 +12,14 @@
 
 /* ── Design tokens ──────────────────────────────────────── */
 :root {
-  --color-bg: #0f0f13;
-  --color-surface: #18181f;
-  --color-border: #2a2a36;
-  --color-text: #c9c9d4;
-  --color-text-muted: #6b6b7e;
-  --color-heading: #f0f0fa;
-  --color-accent: #7c3aed;
-  --color-accent-light: #a78bfa;
+  --color-bg: #000000;
+  --color-surface: #0d0d0d;
+  --color-border: #1f1f1f;
+  --color-text: #d4d4d4;
+  --color-text-muted: #5c5c5c;
+  --color-heading: #ffffff;
+  --color-accent: #e0e0e0;
+  --color-accent-light: #ffffff;
 
   --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
   --font-mono: ui-monospace, Consolas, 'Courier New', monospace;
@@ -32,7 +32,7 @@
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

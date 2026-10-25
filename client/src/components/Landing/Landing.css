@@ -1,9 +1,9 @@
 /* ══════════════════════════════════════════════════════════════
-   Landing.css  –  Red background hero section
+   Landing.css  –  Black hero section
    ══════════════════════════════════════════════════════════════ */
 
 .landing {
   position: relative;
   min-height: 100vh;
-  background: #cc0000;
+  background: #000000;
 }
