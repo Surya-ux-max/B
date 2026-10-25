@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   Landing.css  –  Black hero · Static polished-chrome text
+   Landing.css  –  Black hero · Brushed-aluminium text
    ══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-/* ── Soft ambient glow so text lifts off the black ──────────── */
+/* ── Very faint ambient fill so text isn't floating in void ─── */
 .landing::before {
   content: '';
   position: absolute;
@@ -26,8 +26,8 @@
   width: 90vw;
   height: 80vh;
   background: radial-gradient(
-    ellipse at center,
-    rgba(210, 210, 210, 0.08) 0%,
+    ellipse at 40% 50%,
+    rgba(180, 185, 190, 0.06) 0%,
     transparent 65%
   );
   pointer-events: none;
@@ -41,36 +41,26 @@
   user-select: none;
 }
 
-/* ── Shared polished-chrome style ────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   ALUMINIUM RECIPE
+   ─────────────────────────────────────────────────────────────
+   Real brushed aluminium has:
+   • A cool, blue-shifted grey base (hsl ~210°, low saturation)
+   • Multiple narrow tonal bands (the micro-ridges of brushing)
+   • Soft diffuse highlights — NOT the harsh white of chrome
+   • A slight directional contrast (top/bottom differ subtly)
+
+   We layer TWO gradients:
+   1. repeating-linear  → fine horizontal striations (brush grain)
+   2. linear-gradient   → overall shading / reflectance envelope
+   ──────────────────────────────────────────────────────────── */
 .landing-firstname,
 .landing-lastname {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 900;
   letter-spacing: -0.03em;
 
-  /*
-   * Vertical gradient simulating a real chrome surface:
-   * light comes from above → bright highlight band near top,
-   * falls off to mid-silver, dips dark at belly, lifts slightly at base.
-   */
-  background: linear-gradient(
-    180deg,
-    #9a9a9a  0%,    /* top edge – slightly duller  */
-    #ffffff 18%,    /* main specular highlight      */
-    #e2e2e2 30%,    /* bright upper body            */
-    #b0b0b0 45%,    /* mid-tone                     */
-    #6e6e6e 58%,    /* shadow belly                 */
-    #c8c8c8 72%,    /* secondary bounce light       */
-    #f0f0f0 82%,    /* lower glint                  */
-    #8a8a8a 100%    /* base edge                    */
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-
-  /* Crisp inner glow to reinforce the lit-from-above feel */
-  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.18))
-          drop-shadow(0 0px 1px rgba(255, 255, 255, 0.55));
+  color: #ffffff;
 }
 
 /* ── First name ──────────────────────────────────────────────── */
@@ -83,5 +73,5 @@
   font-size: clamp(8rem, 22vw, 22rem);
   margin-left: clamp(0.5rem, 2vw, 3rem);
   line-height: 0.8;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+
 }
